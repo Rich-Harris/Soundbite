@@ -18,7 +18,25 @@ define([
 	
 	'use strict';
 
-	var Soundbite, instances = [];
+	var Soundbite, instances = [], noop;
+	
+
+	// first, check this browser supports HTML5 audio
+	if ( !document.createElement( 'audio' ).play ) {
+		noop = function () {};
+
+		Soundbite = function () {};
+		Soundbite.prototype = {
+			play: noop,
+			pause: noop,
+			teardown: noop
+		};
+
+		Soundbite.init = Soundbite.teardown = noop;
+
+		return Soundbite;
+	}
+
 
 	Soundbite = function ( el, options ) {
 		var self = this;
