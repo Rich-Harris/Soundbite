@@ -9,7 +9,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
 	<link rel='stylesheet' href='demo/main.css'>
 
-	<link rel='stylesheet' href='src/soundbite.css'>
+	<link rel='stylesheet' href='Soundbite.css'>
 </head>
 
 <body>
@@ -59,15 +59,10 @@
 
 	</main>
 
-	<script src='demo/lib/require.js'></script>
+	<script src='Soundbite.js'></script>
 
 	<script>
-		require.config({ baseUrl: 'src/', urlArgs: 'bust=' + Date.now() });
-
-		require([ 'Soundbite' ], function ( Soundbite ) {
-			window.Soundbite = Soundbite;
-			Soundbite.init();
-		});
+		Soundbite.init();
 
 		// if CSS transforms aren't supported, don't show the 'fork me' button.
 		// Quick and dirty detect

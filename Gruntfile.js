@@ -64,6 +64,10 @@ module.exports = function ( grunt ) {
 			tmpToRoot: {
 				src: 'tmp/Soundbite.max.js',
 				dest: 'Soundbite.max.js'
+			},
+			cssToRoot: {
+				src: 'src/Soundbite.css',
+				dest: 'Soundbite.css'
 			}
 		}
 
@@ -83,6 +87,7 @@ module.exports = function ( grunt ) {
 		// TODO add tests!
 		'clean:build',
 		'concat:tmpToRoot',
+		'concat:cssToRoot',
 		'uglify'
 	]);
 

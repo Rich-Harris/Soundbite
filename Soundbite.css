@@ -1,0 +1,80 @@
+/*
+	
+	Soundbite.js - v0.1.0 - 2013-11-09
+	==============================================================
+
+	Embed inline HTML5 audio.
+
+	--------------------------------------------------------------
+
+	Copyright 2013 2013 Rich Harris and contributors
+
+	Permission is hereby granted, free of charge, to any person
+	obtaining a copy of this software and associated documentation
+	files (the "Software"), to deal in the Software without
+	restriction, including without limitation the rights to use,
+	copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the
+	Software is furnished to do so, subject to the following
+	conditions:
+
+	The above copyright notice and this permission notice shall be
+	included in all copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+	OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+	NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+	HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+	WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+	FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+	OTHER DEALINGS IN THE SOFTWARE.
+
+*/
+
+.soundbite-outer .soundbite {
+	position: relative;
+	padding: 0 0.5em 0 1.8em;
+}
+
+.soundbite-outer {
+	position: relative;
+	display: inline-block;
+}
+
+.soundbite-bg {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 0.8em;
+	-webkit-transform: rotate(0.000001deg); /* fix safari bug with border-radius and overflow: hidden not being respected */
+	background-color: #eee;
+	overflow: hidden;
+}
+
+.soundbite-ready, .soundbite-playing {
+	cursor: pointer;
+}
+
+.soundbite-ready .soundbite {
+	/*background: url(play.png) no-repeat 0.3em 50%;*/
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA5pJREFUeNrsW81rE0EUfxHv9ppia+q3rWBykOZmL8WbRFS8BiUgiBg8Kx5FEFFqSyUHK3gQP2PFQwlCPFm9NIKt3za2Uq8b/4FxnkzL7vYlzu7MbDfuPHhsArsz7/1m3pv35s2kGGOQZNoECafNpjtIpVI9/DHCOSsY/x8iXm1xbnB2xBO5zmeoY1Q+EybAlc7wR4FzkfMBxebecZ7iXOWyNrULiwDoYqFwHZs1xNh2UavMmhTH0W4aVNzP2FdBh+xKJiCm+lQbm16j0dHDMJzPw46du2Dvnt3Q25uG/r6tnneWln/Cysov+PjpM3z7+gXezM5CrTbzLxFeiRnRjNwEOJWFwyJHiSvN7ty9x34sLbOwhN9iG9hWh9mAMpQjMwHhxavtBDp1usRez75lugnbxLY7AIEy9RgFQCjfoAQ4fuKkEcUpILCvNiA0goKgRfmx8UkWNWGfOkBQUn5gYDt7P7/ANoqwb5RBBYTQyuM0dJwW22hCGdqYhBQIMgBU46q8BAhVJQDEUhdr5SVAKIcCgFPGv86jvcVReTcIhE9AHTKBI0Ee5dX9ER53OjA0uE8qwMLIbvr5i7+/0+k0HDt6JJL0dn7hA+wfGlwXMXI9R6QjQRHbKy11/qDFVIAUYIksSJuAP7FB2wpK7SK2i5cuR2JGhD9oSgEgUlrPx2FGrlM2h3ZqOnhCmYm+izIA1P1TNwzJpLWY5MzUXhoDgcgd6h0BEJ5fefRlAXCDrJI1BpwFmU4AlP0jFJbCbHRcuXpNu38gUulyJwA8IS/m4lECsOofVPr1E7blD5FJAETM73lZZVqqbnvhyOlYNlEHov0eCoCCrumvA4BVPl++oOwfCDNYiwnchZGsO0DCPbw40M0b12Fbfx/cmrgNrdbvUG0QumSpypAHANzAjBOdO3sGcrkcPH46HfhbQpfsulDYv/6r2p/JbfGg22/EclinfICjywGaBsAdVsvISThChwLA85IqRVUkwWVTZjYQ+q1zgl1Ji4vfoVKp2PJ4YgHgJgClUkm9OqwzCuxWJ5jIZdBtAp6TGFiljeN0f/TkGTx8cB/ywwelvyN0cSgf0HC/gSXqONHY+CTMzc2F2lwldGlQPiCRyZBNh+2GiN0Ss5uidlvcFkZsaSy5xVFbHk/6AQl7RMYekrLH5OxBSXtUltnD0va4fGIvTNgrMyzhl6YSf20u8RcnjQAgcXUWn1v+26uztjrcRfRHgAEAx8gX/7d/13QAAAAASUVORK5CYII=) no-repeat 0.3em 50%;
+	background-size: 1em 1em;
+}
+
+.soundbite-playing .soundbite {
+	/*background: url(pause.png) no-repeat 0.3em 50%;*/
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3FJREFUeNrsW01rE0EYnhTvzTVFJfX71lykuSUKxWsOiiAKQck9P0DxR4ggBDVi8SSyHqVQk5OpXjag4ifEVppr8gvGeWAqs5N3N5vsbpOdnQeGsGRm9n2efef7nRznnGUZKyzjOJH0C3K5XF78VEUqyYTnCpF1LJIr0kj+InWEh44StS+JJiBIF8VPTaS6SBsRq+uL1BbJEbYOYjcWAsSVJOEOqk0ooe56rDbHRBxfe5AgcT3hXbU4bI/UBKSrt33a9H9sbV1jm+UyO3vuPLt08QJbWyuw06dOevLsH/xlh4dD9u37D/b710+21+uxnZ1300zoSo8YHHsTEGjKDov8SoI0f/5im//ZP+DzAmVRB+oK8AbY0Dy2JiB7ccfPoLv3GvxD7yOPG6gTdQcIAZvyiQogybuUAddv3EyEOCUE3uUjgjurCLGQf/T4CT9u4J1xiBCJ/Pr6Gf75y1e+KODdsCGKCHOThxuORmO+aMAGnyYRSoQwAjjLSj6ECE4kAeRQt9TkQ4jQnEsAgaI+zqO9LSN5VQSiTwCH4jwCTMzpF9nhzdIxUmuImQSQc/uFD3UxD5G1WQQY6O0+LO4/eOg7W8N/SZc/AtEfDEIJIJe0nsJhZ3iv37ydupJDnqTK6zNGovzEUpraEqurD2L+zcqbl0MtrIbDYaQ8UcurgM2wPYjbxJ6gXN56lraNRiO1+32E7RXJ0XdTtKav48N+/WUEbAeHII4rQS5y6/ad1O/6EhzqpABy99azgXn1SiX1AhAcNiTXCQ+o6u6vb1ulEeBANIMqJUBJzYE9PFNAcClNFQAbmKaA4EIKkFdzYPfWFBBc8lM9AFvXpoDgQnrAqt55mAKCy6o9HbYCWAGCBcBZnSkguIwpAbpqDhxUmgKCi0sJ4InEwCmtKSC4jCgBXDUHjqhNAcHFnSoAzudNAcGFFKCj5kBwggkdITgQgRadCQFkNFZfzbX7vpt6AQgOfTXyTB8G2+rDq+2XqReA4NAOmgc4ejPo7X1KLXnYTri/4yuADDby+Eyr1UqtAITtXT2gipoJelzk2dNWaC8oFAqR8kQtr3992B7E7eir26Mxezhqj8dtgIQNkbFBUjZMzgZK2lBZGyxtw+Wzd2HCXpnJ+qWpzF+by/zFyUQE0MSgrs6WmHYcz0y6OmtPh1OEfwIMAHEYy/T7d8i1AAAAAElFTkSuQmCC) no-repeat 0.3em 50%;
+	background-size: 1em 1em;
+}
+
+.soundbite-progress {
+	position: absolute;
+	width: 0;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: #ccc;
+}

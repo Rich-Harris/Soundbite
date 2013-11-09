@@ -1,10 +1,9 @@
 /*
 	
-	Ractive - v0.1.0 - 2013-11-09
+	Soundbite.js - v0.1.0 - 2013-11-09
 	==============================================================
 
-	Next-generation DOM manipulation - http://ractivejs.org
-	Follow @RactiveJS for updates
+	Embed inline HTML5 audio.
 
 	--------------------------------------------------------------
 
