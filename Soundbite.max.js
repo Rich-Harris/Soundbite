@@ -104,8 +104,9 @@ var utils_getOptions = function () {
                         str + '.mp3',
                         str + '.ogg'
                     ];
+                } else {
+                    options.sources = [str];
                 }
-                options.sources = [str];
             }
             if (!options.sources) {
                 throw new Error('You must specify at least one audio source');
@@ -187,6 +188,9 @@ var utils_addEventListeners = function (now, classList, startProgressLoop, showP
             audio = soundbite.audio;
             handlers = soundbite._handlers = {};
             outer.addEventListener('click', handlers.click = function () {
+                if (!soundbite.ready) {
+                    return;
+                }
                 if (!soundbite.playing) {
                     soundbite.play();
                 } else {
@@ -205,6 +209,9 @@ var utils_addEventListeners = function (now, classList, startProgressLoop, showP
             };
             outer.addEventListener('touchstart', handlers.touchstart = function (event) {
                 event.preventDefault();
+                if (!soundbite.ready) {
+                    return;
+                }
                 this.addEventListener('touchend', handlers.touchend, false);
                 setTimeout(function () {
                     outer.removeEventListener('touchend', handlers.touchend, false);

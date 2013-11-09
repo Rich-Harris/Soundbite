@@ -23,7 +23,9 @@ define( function () {
 				];
 			}
 
-			options.sources = [ str ];
+			else {
+				options.sources = [ str ];
+			}
 		}
 
 		if ( !options.sources ) {

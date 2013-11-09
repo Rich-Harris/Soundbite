@@ -25,6 +25,10 @@ define([
 		
 		// respond to click and tap
 		outer.addEventListener( 'click', handlers.click = function () {
+			if ( !soundbite.ready ) {
+				return;
+			}
+
 			if ( !soundbite.playing ) {
 				soundbite.play();
 			} else {
@@ -49,6 +53,10 @@ define([
 		outer.addEventListener( 'touchstart', handlers.touchstart = function ( event ) {
 			event.preventDefault();
 
+			if ( !soundbite.ready ) {
+				return;
+			}
+
 			this.addEventListener( 'touchend', handlers.touchend, false );
 
 			setTimeout( function () {
@@ -60,7 +68,7 @@ define([
 		// detect ready event
 		audio.addEventListener( 'durationchange', handlers.ready = function () {
 			soundbite.duration = this.duration;
-			
+
 			if ( !soundbite.ready ) {
 				classList.add( outer, 'soundbite-ready' );
 				classList.add( outer, 'soundbite-play' );
