@@ -1,11 +1,11 @@
 /*
 	
 	Soundbite.js - v<%= pkg.version %> - <%= grunt.template.today( 'yyyy-mm-dd' ) %>
-	==============================================================
+	=============================================================
 
-	Embed inline HTML5 audio.
+	http://rich-harris.co.uk/Soundbite - embed inline HTML5 audio
 
-	--------------------------------------------------------------
+	-------------------------------------------------------------
 
 	Copyright <%= grunt.template.today( 'yyyy' ) %> 2013 Rich Harris and contributors
 
