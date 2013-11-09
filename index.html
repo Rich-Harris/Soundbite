@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang='en-GB'>
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+
+	<title>Soundbite.js</title>
+
+	<link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+	<link rel='stylesheet' href='demo/main.css'>
+
+	<link rel='stylesheet' href='src/soundbite.css'>
+</head>
+
+<body>
+
+	<a class='forkme' href='https://github.com/Rich-Harris/Soundbite'>Fork me on GitHub</a>
+
+	<header>
+		<h1>Soundbite.js <small class='soundbite' data-audio='demo/audio/deepnote'>the audience is listening</small></h1>
+	</header>
+
+	<main>
+
+		<ul class='checklist clearfix'>
+			<li>Works on mobile</li>
+			<li>Fully customisable</li>
+			<li>Open source</li>
+		</ul>
+
+		<p>Storytellers have always understood the power of audio &ndash; in fact, the words 'audio' and 'audience' share a <a href='http://en.wiktionary.org/wiki/audientia'>common Latin root</a>. But on the web, it's hard to present audio in a way that enhances the story rather than interrupting it.</p>
+
+		<p><span class='logo'>Soundbite.js</span> is an open source JavaScript library that puts audio at the heart of your story.</p>
+
+		
+		<h2>Examples</h2>
+
+		<p class='example'>The <span class='soundbite' data-audio='demo/audio/wilhelm'>Wilhelm scream</span>'s revival came from motion picture sound designer Ben Burtt, who discovered the original recording and incorporated it into a scene in Star Wars ... Over the next decade, Burtt began incorporating the effect in other films he worked on, including most projects involving George Lucas or Steven Spielberg. (It is used in all of the Star Wars and Indiana Jones movies.)</p>
+
+
+		<p class='example'>Gregorian chant was traditionally sung by <span class='soundbite' data-audio='demo/audio/venicreatorspiritus'>choirs of men and boys</span> in churches, or by women and men of religious orders in their chapels. It is the music of the Roman Rite, performed in the Mass and the monastic Office. Although Gregorian chant supplanted or marginalized the other indigenous plainchant traditions of the Christian West to become the official music of the Christian liturgy ...</p>
+
+
+		<p class='example'>The Battle of Midway in the Pacific Theater of Operations was one of the most important naval battles of World War II. Between 4 and 7 June 1942, only six months after Japan's attack on Pearl Harbor, and one month after the Battle of the Coral Sea, the United States Navy <span class='soundbite' data-audio='demo/audio/midway'>decisively defeated</span> an Imperial Japanese Navy (IJN) attack on Midway Atoll, inflicting irreparable damage on the Japanese fleet ...</p>
+
+		<!-- TODO add credits/links here -->
+
+
+		<h2>Is this a rip-off of SoundCiteJS?</h2>
+
+		<p>Yes! <a href='http://soundcite.knightlab.com/'>SoundCite</a>, by the <a href='http://knightlab.northwestern.edu/'>Knight Lab</a>, is a terrific tool that lets you use clips hosted on <a href='https://soundcloud.com/'>SoundCloud</a>. The idea of turning snippets of text into audio players &ndash; a brilliant idea, which deserves to be widely adopted &ndash; was all theirs.</p>
+
+		<p>However, at present, SoundCite requires Flash, which means it doesn't work on mobile devices, and you can't host the audio yourself. It also uses a method of styling which is fiendishly clever but difficult to customise. For these reasons, not everyone is able to use SoundCite &ndash; hence <span class='logo'>Soundbite.js</span>.</p>
+
+
+		<h2>How to use</h2>
+
+		<p>coming soon...</p>
+
+	</main>
+
+	<script src='demo/lib/require.js'></script>
+
+	<script>
+		require.config({ baseUrl: 'src/', urlArgs: 'bust=' + Date.now() });
+
+		require([ 'Soundbite' ], function ( Soundbite ) {
+			window.Soundbite = Soundbite;
+			Soundbite.init();
+		});
+
+		// if CSS transforms aren't supported, don't show the 'fork me' button.
+		// Quick and dirty detect
+		style = document.createElement( 'div' ).style;
+
+		if ( style.transform !== undefined ) {
+			document.body.className += 'transforms-enabled';
+		} else {
+			[ 'webkit', 'moz', 'ms', 'o' ].forEach( function ( vendor ) {
+				if ( style[ vendor + 'Transform' ] !== undefined ) {
+					document.body.className += 'transforms-enabled';
+				}
+			});
+		}
+	</script>
+</body>
+</html>
